@@ -18,5 +18,6 @@ const userSchema = new mongoose.Schema({
     required: true
   }
 });
+userSchema.set('versionKey', false);
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('user', userSchema);``
