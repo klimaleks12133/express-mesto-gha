@@ -1,4 +1,4 @@
-const Card = require('../models/card');
+const Card = require('../models/cards');
 const { STATUS_400, STATUS_404, STATUS_500 } = require('../utils/constants');
 const getCards = (req, res) => {
   Card.find({})
@@ -21,7 +21,7 @@ const createCard = (req, res) => {
 };
 
 const deleteCard = (req, res) => {
-  Card.findByIdAndRemove(req.params.cardId)
+  Card..findByIdAndDelete(req.params.cardId)
     .then((card) => {
       if (!card) {
         res.status(STATUS_404).send({ message: 'Карточка с указанным _id не найдена' });

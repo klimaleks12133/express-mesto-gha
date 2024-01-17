@@ -1,5 +1,5 @@
 // const { ObjectId } = require('mongoose').Types;
-const User = require('../models/user');
+const User = require('../models/users');
 const { STATUS_400, STATUS_404, STATUS_500 } = require('../utils/constants');
 const getUsers = (req, res) => {
   User.find({})
