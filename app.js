@@ -26,14 +26,10 @@ app.use('/*', (req, res) => {
   res.status(error.status).send({ message: error.message });
 });
 
-app.use((error, req, res) => {
+app.use('*', (req, res) => {
   res
-    .status(error.status)
-    .send({
-      message: (error.status === STATUS_500)
-        ? 'На сервере произошла ошибка'
-        : error.message,
-    });
+    .status(ERROR_CODE.NOT_FOUND)
+    .send({ message: `Страницы по адресу ${req.baseUrl} не существует` });
 });
 
 app.listen(port);
