@@ -1,6 +1,7 @@
 // const { ObjectId } = require('mongoose').Types;
 const User = require('../models/users');
 const { STATUS_400, STATUS_404, STATUS_500 } = require('../utils/constants');
+
 const getUsers = (req, res) => {
   User.find({})
     .then((users) => res.send(users))
@@ -94,5 +95,5 @@ module.exports = {
   createUser,
   getUserById,
   updateUserInfo,
-  updateUserAvatar
+  updateUserAvatar,
 };

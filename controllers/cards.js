@@ -1,5 +1,6 @@
 const Card = require('../models/cards');
 const { STATUS_400, STATUS_404, STATUS_500 } = require('../utils/constants');
+
 const getCards = (req, res) => {
   Card.find({})
     .populate('owner')
@@ -87,5 +88,5 @@ module.exports = {
   createCard,
   deleteCard,
   likeCard,
-  dislikeCard
+  dislikeCard,
 };

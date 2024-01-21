@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const usersRoutes = require('./routes/users');
 const cardsRoutes = require('./routes/cards');
-const { STATUS_500 } = require('./utils/constants');
+// const { STATUS_500 } = require('./utils/constants');
 const NotFoundError = require('./errors/not-found-error');
 
 const port = process.env.PORT || 3000;
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   req.user = {
-    _id: '64116c098734342bc4a5389b'
+    _id: '64116c098734342bc4a5389b',
   };
   next();
 });
@@ -26,11 +26,15 @@ app.use('/*', (req, res) => {
   res.status(error.status).send({ message: error.message });
 });
 
-app.use('*', (req, res) => {
-  res
-    .status(ERROR_CODE.NOT_FOUND)
-    .send({ message: `Страницы по адресу ${req.baseUrl} не существует` });
-});
+// app.use((error, req, res) => {
+//   res
+//     .status(error.status)
+//     .send({
+//       message: (error.status === STATUS_500)
+//         ? 'На сервере произошла ошибка'
+//         : error.message,
+//     });
+// });
 
 app.listen(port);
 // app.listen(port, () => {
