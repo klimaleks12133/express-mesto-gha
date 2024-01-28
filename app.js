@@ -6,7 +6,7 @@ const usersRoutes = require('./routes/users');
 const cardsRoutes = require('./routes/cards');
 const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
-const { STATUS_500 } = require('./utils/constants');
+// const { STATUS_500 } = require('./utils/constants');
 const errorHandler = require('./middlewares/error-handler');
 const NotFoundError = require('./errors/not-found-error');
 const validationSchemas = require('./middlewares/validators/validationSchemas');
@@ -38,7 +38,7 @@ app.use(errorHandler);
 
 app.use(errors());
 
-// app.use((error, req, res) => {
+// app.use((error, req, res, next) => {
 //   res
 //     .status(error.status)
 //     .send({
@@ -46,6 +46,7 @@ app.use(errors());
 //         ? 'На сервере произошла ошибка'
 //         : error.message,
 //     });
+// next(error);
 // });
 
 

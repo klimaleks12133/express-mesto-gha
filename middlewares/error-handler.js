@@ -24,7 +24,7 @@ function errorHandler(err, req, res, next) {
       return res.status(STATUS_409).send({ message: 'Пользователь с таким email уже существует' });
     }
 
-    if (err.name === 'JsonWebTokenError') {
+    if (err.name === 'JsonWebTokenError'|| err.status === STATUS_401) {
       return res.status(STATUS_401).send({ message: 'Необходима авторизация' });
     }
     const { statusCode = STATUS_500, message } = err;
