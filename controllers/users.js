@@ -53,6 +53,7 @@ module.exports.postUsers = (req, res, next) => {
       if (err.code === 11000) {
         next(new AlreadyExistsError('Пользователь с таким email уже существует'));
       }
+      next(err);
     });
 };
 
